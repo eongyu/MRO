@@ -1,0 +1,15 @@
+{
+    "root_dir": "C:/project/test2",
+    "username": "egkim",
+    "password": "1111",
+    "auto_start": true,
+    "ftp_port": 21,
+    "passive_port_start": 60000,
+    "passive_port_end": 60010,
+    "device_names": [
+        "Main FAN",
+        "Rotary Motor",
+        "Combustion FAN",
+        "Purge FAN"
+    ]
+}

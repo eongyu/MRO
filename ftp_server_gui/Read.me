@@ -1,0 +1,11 @@
+# (base가 아닌 새 환경 생성)
+python -m venv ftp_env
+ftp_env\Scripts\activate
+pip install -r requirements.txt  # 또는 필요한 모듈 수동 설치
+pip install pyinstaller
+pip install PyQt6 pyftpdlib 
+
+
+
+
+pyinstaller --clean --noconsole --onefile --windowed ftp_server_gui_updated.py --add-data "idle.png;." --add-data "active.png;." --add-data "error.png;." --add-data "config.json;." --icon="electric-motor.ico"
