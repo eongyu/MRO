@@ -1,0 +1,178 @@
+<?xml version='1.0' encoding='utf-8'?>
+<ui version="4.0">
+ <class>IEPEWindow</class>
+ <widget class="QMainWindow" name="IEPEWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1200</width>
+    <height>800</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>IEPE Sensor Measurement</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <layout class="QVBoxLayout" name="verticalLayout">
+    <item>
+     <layout class="QHBoxLayout" name="controlLayout">
+      <item>
+       <widget class="QComboBox" name="comboChannelSelect">
+        <item><property name="text"><string>ai0</string></property></item>
+        <item><property name="text"><string>ai1</string></property></item>
+        <item><property name="text"><string>ai2</string></property></item>
+        <item><property name="text"><string>ai3</string></property></item>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="btnStart">
+        <property name="text">
+         <string>Start</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="btnStop">
+        <property name="text">
+         <string>Stop</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLabel" name="labelTargetCount">
+        <property name="text">
+         <string>목표 측정 횟수:</string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QSpinBox" name="spinMaxCount">
+        <property name="minimum">
+         <number>0</number>
+        </property>
+        <property name="maximum">
+         <number>100000</number>
+        </property>
+        <property name="value">
+         <number>0</number>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLabel" name="labelInterval">
+        <property name="text">
+         <string>측정 주기 (초):</string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QSpinBox" name="spinInterval">
+        <property name="minimum">
+         <number>1</number>
+        </property>
+        <property name="maximum">
+         <number>3600</number>
+        </property>
+        <property name="value">
+         <number>5</number>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLabel" name="labelCurrentCount">
+        <property name="text">
+         <string>현재 측정 횟수: 0</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </item>
+    <item>
+     <widget class="QLabel" name="lblDirectory">
+      <property name="text">
+       <string>📁 저장 경로: ./data</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QLabel" name="lblStatus">
+      <property name="text">
+       <string>상태: 대기 중</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QGroupBox" name="groupBoxPeakFreq">
+      <property name="title">
+       <string>Top 10 Peak Frequencies (Hz)</string>
+      </property>
+      <layout class="QHBoxLayout" name="peakFreqLayout">
+       <item><widget class="QLineEdit" name="peakFreq1"/></item>
+       <item><widget class="QLineEdit" name="peakFreq2"/></item>
+       <item><widget class="QLineEdit" name="peakFreq3"/></item>
+       <item><widget class="QLineEdit" name="peakFreq4"/></item>
+       <item><widget class="QLineEdit" name="peakFreq5"/></item>
+       <item><widget class="QLineEdit" name="peakFreq6"/></item>
+       <item><widget class="QLineEdit" name="peakFreq7"/></item>
+       <item><widget class="QLineEdit" name="peakFreq8"/></item>
+       <item><widget class="QLineEdit" name="peakFreq9"/></item>
+       <item><widget class="QLineEdit" name="peakFreq10"/></item>
+      </layout>
+     </widget>
+    </item>
+    <item>
+     <widget class="QGroupBox" name="groupBoxStats">
+      <property name="title">
+       <string>Acceleration Statistics (g)</string>
+      </property>
+      <layout class="QHBoxLayout" name="accelStatsLayout">
+       <item><widget class="QLabel" name="labelMin"><property name="text"><string>Min:</string></property></widget></item>
+       <item><widget class="QLineEdit" name="editMin"/></item>
+       <item><widget class="QLabel" name="labelMax"><property name="text"><string>Max:</string></property></widget></item>
+       <item><widget class="QLineEdit" name="editMax"/></item>
+       <item><widget class="QLabel" name="labelRMS"><property name="text"><string>RMS:</string></property></widget></item>
+       <item><widget class="QLineEdit" name="editRMS"/></item>
+      </layout>
+     </widget>
+    </item>
+    <item>
+     <widget class="QWidget" name="plotWidget" native="true">
+      <layout class="QVBoxLayout" name="plotLayout"/>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QMenuBar" name="menubar">
+   <widget class="QMenu" name="menuFile">
+    <property name="title"><string>File</string></property>
+    <addaction name="actionSelect_Directory"/>
+    <addaction name="actionOpen_CSV"/>
+    <addaction name="actionCalibrate_Channel"/>
+    <addaction name="actionExit"/>
+   </widget>
+   <addaction name="menuFile"/>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+  <action name="actionSelect_Directory">
+   <property name="text"><string>Select Directory</string></property>
+  </action>
+  <action name="actionOpen_CSV">
+   <property name="text"><string>Open CSV File</string></property>
+  </action>
+  <action name="actionCalibrate_Channel">
+   <property name="text"><string>Calibrate Channel</string></property>
+  </action>
+  <action name="actionExit">
+   <property name="text"><string>Exit</string></property>
+  </action>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
